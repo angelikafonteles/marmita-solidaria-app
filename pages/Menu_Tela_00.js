@@ -15,7 +15,7 @@ const Menu_Tela_00 = ({navigation}) => {
                         Menu
                     </Text>
                     <View style={styles.grupo_Botoes}>
-                        <TouchableOpacity style={styles.botao_Doação}>
+                        <TouchableOpacity style={styles.botao_Doação} onPress={() => navigation.navigate('Doacao_Tela_00')}>
                             <Text style={{color: "white"}}>Doação</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.botao_Sair} onPress={() => navigation.navigate('Login_Tela_00')}>

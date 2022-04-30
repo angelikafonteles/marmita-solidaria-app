@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet, Button, TouchableOpacity, Image, TextInput } from 'react-native'
 import Header from './components/Header'
 
-const Login_Erro_Tela_00 = ({navigation}) => {
+const Doacao_Tela_01 = ({navigation}) => {
     return (
         <>
             <Header title="Marmita Solidária"></Header>
@@ -10,12 +10,15 @@ const Login_Erro_Tela_00 = ({navigation}) => {
             <View style={styles.container}>
                 <View style={styles.container_intern}>
                     <Text style={styles.titulo}>
-                        Login
+                        Doação
                     </Text>
                     <View style={styles.mensagem}>
-                        <Text style={{color: "white"}}> Usuario não cadastrado ou senha incorreta</Text>
+                        <Text style={{color: "white"}}> Marmita incluída com sucesso!</Text>
                     </View>
                     <View style={styles.grupo_Botoes}>
+                        <TouchableOpacity style={styles.botao_Menu} onPress={() => navigation.navigate('Menu_Tela_00')}>
+                            <Text style={{color: "white"}}>Menu</Text>
+                        </TouchableOpacity>
                         <TouchableOpacity style={styles.botao_Sair} onPress={() => navigation.navigate('Login_Tela_00')}>
                             <Text style={{color: "white"}}>Sair</Text>
                         </TouchableOpacity>
@@ -29,7 +32,7 @@ const Login_Erro_Tela_00 = ({navigation}) => {
     );
 }
 
-export default Login_Erro_Tela_00
+export default Doacao_Tela_01
 
 const styles = StyleSheet.create({
     container: {
@@ -55,6 +58,14 @@ const styles = StyleSheet.create({
         textAlign: "center",
         paddingTop:10,
     },
+    botao_Menu:{
+        backgroundColor: "#0BCF05",
+        alignItems: "center",
+        justifyContent: "center",
+        width: 140,
+        height: 40,
+        borderRadius: 50,
+    },
     botao_Sair:{
         backgroundColor: "#F21E1E",
         alignItems: "center",
@@ -64,19 +75,16 @@ const styles = StyleSheet.create({
         borderRadius: 50,
     },
     grupo_Botoes:{
-        //width: 250,
-        //height: 250,
+        width: 250,
+        height: 250,
         //paddingTop: 50,
         //paddingBottom: 60,
         justifyContent: 'space-around',
-        alignItems: "center",
-        //backgroundColor: "white",
-                 
+        alignItems: "center",             
     },
     mensagem:{
-        width: 200,
+        //width: 200,
         alignItems: "center",
-        textAlign: 'center'
         
     },
   

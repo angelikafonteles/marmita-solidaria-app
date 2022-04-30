@@ -46,83 +46,84 @@ const Cadastro_Tela_00 = ({navigation}) => {
                         Cadastro
                     </Text>
                     <View style={styles.box_alinhamento}>
-                        <Text style={styles.title_box}>Razão Social: </Text>
+                        <Text style={styles.title_box}></Text>
                         <TextInput
-                        placeholder=""
+                        placeholder="razão social"
                         value={razaoSocial}
                         onChangeText={value => setRazaoSocial(value)}
                         style={styles.info_request}
                         />
                     </View>
-                    <View style={styles.box_alinhamento_CNPJ}>
-                        <Text style={styles.title_box}>CNPJ: </Text>
+                    <View style={styles.box_alinhamento}>
+                        <Text style={styles.title_box}></Text>
                         <TextInput
-                        placeholder=""
+                        placeholder="cnpj"
                         value={cnpj}
                         onChangeText={value => setCnpj(value)}
                         style={styles.info_request}
                         />                        
                     </View>
                     <View style={styles.box_alinhamento}>
-                        <Text style={styles.title_box}>Nome Fantasia: </Text>
+                        <Text style={styles.title_box}></Text>
                         <TextInput
-                        placeholder=""
+                        placeholder="nome fantasia"
                         value={nomeFantasia}
                         onChangeText={value => setNomeFantasia(value)}
                         style={styles.info_request}
                         />                        
                     </View>
                     <View style={styles.box_alinhamento}>
-                        <Text style={styles.title_box}>Email: </Text>
+                        <Text style={styles.title_box}></Text>
                         <TextInput
-                        placeholder=""
+                        placeholder="exemplo@email.com"
                         value={email}
                         onChangeText={value => setEmail(value)}
                         style={styles.info_request}
                         />                        
                     </View>
-                    <View style={styles.box_alinhamento_Telefone}>
-                        <Text style={styles.title_box}>Telefone: </Text>
+                    <View style={styles.box_alinhamento}>
+                        <Text style={styles.title_box}></Text>
                         <TextInput
-                        placeholder=""
+                        placeholder="(99)999999999"
                         value={telefone}
                         onChangeText={value => setTelefone(value)}
                         style={styles.info_request}
                         />
                     </View>
                     <View style={styles.box_alinhamento}>
-                        <Text style={styles.title_box}>Cep: </Text>
+                        <Text style={styles.title_box}></Text>
                         <TextInput
-                        placeholder=""
+                        placeholder="cep"
                         value={cep}
                         onChangeText={value => setCep(value)}
                         style={styles.info_request}
                         />                        
                     </View>
                     <View style={styles.box_alinhamento}>
-                        <Text style={styles.title_box}>Número: </Text>
+                        <Text style={styles.title_box}></Text>
                         <TextInput
-                        placeholder=""
+                        placeholder="número"
                         value={numero}
                         onChangeText={value => setNumero(value)}
                         style={styles.info_request}
                         />
                     </View>
                     <View style={styles.box_alinhamento}>
-                        <Text style={styles.title_box}>Complemento: </Text>
+                        <Text style={styles.title_box}></Text>
                         <TextInput
-                        placeholder=""
+                        placeholder="complemento"
                         value={complemento}
                         onChangeText={value => setComplemento(value)}
                         style={styles.info_request}
                         />
                     </View>
-                    <View style={styles.box_alinhamento_Senha}>
-                        <Text style={styles.title_box}>Senha: </Text>
+                    <View style={styles.box_alinhamento}>
+                        <Text style={styles.title_box}></Text>
                         <TextInput
-                        placeholder=""
+                        placeholder="senha"
                         value={password}
                         onChangeText={value => setPassword(value)}
+                        secureTextEntry={true}
                         style={styles.info_request}
                         />
                     </View>
@@ -131,16 +132,13 @@ const Cadastro_Tela_00 = ({navigation}) => {
                         <TouchableOpacity style={styles.botao_Cadastrar} onPress={() => createUser()}>
                             <Text style={{color: "white"}}>Cadastrar</Text>
                         </TouchableOpacity>
-
-                        <TouchableOpacity style={styles.botao_Voltar} onPress={() => navigation.navigate('Login_Tela_00')}>
-                            <Text style={{color: "white"}}>Voltar</Text>
+                        <TouchableOpacity style={styles.botao_Sair} onPress={() => navigation.navigate('Login_Tela_00')}>
+                            <Text style={{color: "white"}}>Sair</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
                 
             </View>
-            
-        
         </>
     );
 }
@@ -157,10 +155,10 @@ const styles = StyleSheet.create({
     container_intern: {
         backgroundColor: '#76C0F1',
         borderRadius: 50,
-        //justifyContent: 'center',
+        //justifyContent: 'left',
         //width: 100, 
-        height: 450,
-        //textAlign: "center",
+        height: 600,
+        //textAlign: "left",
         alignItems: "center",  
         justifyContent: 'space-around',      
     },
@@ -182,14 +180,14 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         color: 'white',
-        
     },
     box_alinhamento:{
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
+        paddingTop:10,
     },
-    botao_Voltar:{
+    botao_Sair:{
         backgroundColor: "#F21E1E",
         alignItems: "center",
         justifyContent: "center",
@@ -206,41 +204,13 @@ const styles = StyleSheet.create({
         borderRadius: 50,
     },
     grupo_Botoes:{
-        width: 300,
+        //width: 300,
         //backgroundColor: 'black',
         flexDirection: 'row',
         justifyContent: 'space-around',
-        //marginHorizontal: 50,
-        
-    },
-    esqueci_a_senha:{
-        flexDirection: 'row',
-        justifyContent: "center",
-    },
-    box_alinhamento_CNPJ:{
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        paddingLeft: 55,
-    },
-    box_alinhamento_Telefone:{
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        paddingLeft: 30,
-    },
-    box_alinhamento_Endereco:{
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        paddingLeft: 25,
-    },
-    box_alinhamento_Senha:{
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        paddingLeft: 45,
-    },
+        marginHorizontal: 10,
+        paddingTop:10,
+    }
 });
 
 

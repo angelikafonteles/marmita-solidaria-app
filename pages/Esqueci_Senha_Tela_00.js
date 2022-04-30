@@ -12,17 +12,10 @@ const Esqueci_Senha_Tela_01 = ({navigation}) => {
                     <Text style={styles.titulo}>
                         Esqueci a Senha
                     </Text>
+                    <Text style={styles.title_box}>Informe seu email</Text>
                     <View style={styles.box_alinhamento}>
-                        <Text style={styles.title_box}>CNPJ:</Text>
                         <TextInput
-                        placeholder=""
-                        style={styles.info_request}
-                        />                        
-                    </View>
-                    <View style={styles.box_alinhamento}>
-                        <Text style={styles.title_box}>Email:</Text>
-                        <TextInput
-                        placeholder=""
+                        placeholder="exemplo@email.com"
                         style={styles.info_request}
                         />
                     </View>
@@ -30,7 +23,6 @@ const Esqueci_Senha_Tela_01 = ({navigation}) => {
                         <TouchableOpacity style={styles.botao_Enviar} onPress={() => navigation.navigate('Esqueci_Senha_Tela_01')}>
                             <Text style={{color: "white"}}>Enviar</Text>
                         </TouchableOpacity>
-
                         <TouchableOpacity style={styles.botao_Voltar} onPress={() => navigation.navigate('Esqueci_Senha_Tela_02')}>
                             <Text style={{color: "white"}}>Voltar</Text>
                         </TouchableOpacity>
@@ -60,7 +52,7 @@ const styles = StyleSheet.create({
         //width: 100, 
         height: 300,
         //textAlign: "center",
-        //alignItems: "center",  
+        alignItems: "center",  
         justifyContent: 'space-around',      
     },
     titulo:{
@@ -81,7 +73,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         color: 'white',
-        
     },
     box_alinhamento:{
         flexDirection: 'row',
@@ -109,7 +100,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         marginHorizontal: 10,
     },
-    esqueci_a_senha:{
+    hiperlink:{
         flexDirection: 'row',
         justifyContent: "center",
     },

@@ -16,8 +16,8 @@ const Esqueci_Senha_Tela_02 = ({navigation}) => {
                         <Text style={{color: "white"}}> CNPJ ou email não encontrados.</Text>
                     </View>
                     <View style={styles.grupo_Botoes}>
-                        <TouchableOpacity style={styles.botao_Voltar} onPress={() => navigation.navigate('Login_Tela_00')}>
-                            <Text style={{color: "white"}}>Voltar</Text>
+                        <TouchableOpacity style={styles.botao_Sair} onPress={() => navigation.navigate('Login_Tela_00')}>
+                            <Text style={{color: "white"}}>Sair</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
         textAlign: "center",
         paddingTop:10,
     },
-    botao_Voltar:{
+    botao_Sair:{
         backgroundColor: "#F21E1E",
         alignItems: "center",
         justifyContent: "center",

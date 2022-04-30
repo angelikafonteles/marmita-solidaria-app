@@ -7,20 +7,27 @@ import { initializeApp } from 'firebase/app';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth} from 'firebase/auth';
 import { async } from '@firebase/util';
 
-const Login_Tela_00 = ({navigation}) => {
-    const app = initializeApp(firebaseConfig);
-    const [email, setEmail] = React.useState('');
-    const [password, setPassword] = React.useState('');
+import { Database, getDatabase, ref, set, update, getFirestore } from "firebase/database";
+import { inserirMarmita } from './services/ApiService';
 
-    async function login() {
-        const auth = getAuth();
-        await signInWithEmailAndPassword(auth, email, password)
-        .then(value => {
-            navigation.navigate('Menu_Tela_00')
 
-        })
-        .catch(error => navigation.navigate('Login_Erro_Tela_00'));
-    }
+const Doacao_Tela_00 = ({navigation}) => {
+
+    const [restauranteId, setRestauranteId] = React.useState('');
+    const [dataFeitura, setDataFeitura] = React.useState('');
+    const [descricao, setDescricao] = React.useState('');
+    const [observacao, setObservacao] = React.useState('');
+    const [quantidade, setQuantidade] = React.useState('');
+
+    const inserirDoacao = async () => {
+        try {
+            await inserirMarmita(restauranteId, dataFeitura, descricao, observacao, observacao, quantidade);
+            navigation.navigate('Doacao_Tela_01');
+          } catch (ex) {
+            console.log(ex);
+          }
+    };
+
     return (
         <>
             <Header title="Marmita Solidária"></Header>
@@ -28,42 +35,42 @@ const Login_Tela_00 = ({navigation}) => {
             <View style={styles.container}>
                 <View style={styles.container_intern}>
                     <Text style={styles.titulo}>
-                        Login
+                        Doação
                     </Text>
                     <View style={styles.box_alinhamento}>
                         <Text style={styles.title_box}></Text>
                         <TextInput
-                        placeholder="exemplo@email.com"
-                        value={email}
-                        onChangeText={value => setEmail(value)}
+                        placeholder="dd/mm/aaaa hh:mm:ss"
+                        value={dataFeitura}
+                        onChangeText={value => setDataFeitura(value)}
                         style={styles.info_request}
                         />                        
                     </View>
                     <View style={styles.box_alinhamento}>
                         <Text style={styles.title_box}></Text>
                         <TextInput
-                        placeholder="senha"
-                        value={password}
-                        onChangeText={value => setPassword(value)}
-                        secureTextEntry={true}
+                        placeholder="descrição"
+                        value={descricao}
+                        onChangeText={value => setDescricao(value)}
                         style={styles.info_request}
-                        />
+                        />                        
                     </View>
+                    <View style={styles.box_alinhamento}>
+                        <Text style={styles.title_box}></Text>
+                        <TextInput
+                        placeholder="quantidade"
+                        value={quantidade}
+                        onChangeText={value => setQuantidade(value)}
+                        style={styles.info_request}
+                        />                        
+                    </View>
+        
                     <View style={styles.grupo_Botoes}>
-                        <TouchableOpacity style={styles.botao_Entrar} onPress={() => login()}>
-                            <Text style={{color: "white"}}>Entrar</Text>
+                        <TouchableOpacity style={styles.botao_Inserir} onPress={() => inserirDoacao()}>
+                            <Text style={{color: "white"}}>Inserir</Text>
                         </TouchableOpacity>
-                    </View>
-                    <View style={styles.hiperlink}>
-                        <Text style={{color: "white"}} >Esqueceu a senha? </Text>
-                        <TouchableOpacity>
-                                <Text style={{color: "blue", textDecoration: "underline"}} onPress={() => navigation.navigate('Esqueci_Senha_Tela_00')}>Clique aqui</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.hiperlink}>
-                        <Text style={{color: "white"}} >Não possui cadastro? </Text>
-                        <TouchableOpacity>
-                                <Text style={{color: "blue", textDecoration: "underline"}} onPress={() => navigation.navigate('Cadastro_Tela_00')}>Clique aqui</Text>
+                        <TouchableOpacity style={styles.botao_Sair} onPress={() => navigation.navigate('Login_Tela_00')}>
+                            <Text style={{color: "white"}}>Sair</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -73,7 +80,7 @@ const Login_Tela_00 = ({navigation}) => {
     );
 }
 
-export default Login_Tela_00
+export default Doacao_Tela_00
 
 const styles = StyleSheet.create({
     container: {
@@ -85,10 +92,10 @@ const styles = StyleSheet.create({
     container_intern: {
         backgroundColor: '#76C0F1',
         borderRadius: 50,
-        //justifyContent: 'center',
+        //justifyContent: 'left',
         //width: 100, 
-        height: 300,
-        //textAlign: "center",
+        height: 250,
+        //textAlign: "left",
         alignItems: "center",  
         justifyContent: 'space-around',      
     },
@@ -115,8 +122,17 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
+        //paddingTop:10,
     },
-    botao_Entrar:{
+    botao_Sair:{
+        backgroundColor: "#F21E1E",
+        alignItems: "center",
+        justifyContent: "center",
+        width: 140,
+        height: 40,
+        borderRadius: 50,
+    },
+    botao_Inserir:{
         backgroundColor: "#0BCF05",
         alignItems: "center",
         justifyContent: "center",
@@ -125,14 +141,13 @@ const styles = StyleSheet.create({
         borderRadius: 50,
     },
     grupo_Botoes:{
+        //width: 300,
+        //backgroundColor: 'black',
         flexDirection: 'row',
         justifyContent: 'space-around',
         marginHorizontal: 10,
-    },
-    hiperlink:{
-        flexDirection: 'row',
-        justifyContent: "center",
-    },
+        paddingTop:10,
+    }
 });
 
 

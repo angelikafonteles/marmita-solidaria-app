@@ -30,3 +30,16 @@ export async function cadastrarUsuario(razaoSocial, cnpj, nomeFantasia, email, t
       };
     await axios.post(url, usuario)  
 };
+
+export async function inserirMarmita(restauranteId, dataFeitura, descricao, observacao, quantidade){
+    
+    const url = "https://marmita-solidaria-svc.herokuapp.com/marmitas";
+    const marmita = {
+        restauranteId: restauranteId,
+        dataFeitura: dataFeitura,
+        descricao: descricao,
+        observacao: observacao,
+        quantidade: quantidade
+      };
+    await axios.post(url, marmita)  
+};

@@ -7,6 +7,8 @@ import Menu_Tela_00 from './pages/Menu_Tela_00';
 import Login_Erro_Tela_00 from './pages/Login_Erro_Tela_00';
 import Cadastro_Tela_00 from './pages/Cadastro_Tela_00';
 import Cadastro_Tela_01 from './pages/Cadastro_Tela_01';
+import Doacao_Tela_00 from './pages/Doacao_Tela_00';
+import Doacao_Tela_01 from './pages/Doacao_Tela_01';
 import Esqueci_Senha_Tela_00 from './pages/Esqueci_Senha_Tela_00';
 import Esqueci_Senha_Tela_01 from './pages/Esqueci_Senha_Tela_01';
 import Esqueci_Senha_Tela_02 from './pages/Esqueci_Senha_Tela_02';
@@ -19,6 +21,8 @@ const Route = () => {
             <AppStack.Navigator initialRouteName='Login_Tela_00' screenOptions={{headerShown: false}}>
                 <AppStack.Screen name='Login_Tela_00' component={Login_Tela_00}/>
                 <AppStack.Screen name='Menu_Tela_00' component={Menu_Tela_00}/>
+                <AppStack.Screen name='Doacao_Tela_00' component={Doacao_Tela_00}/>
+                <AppStack.Screen name='Doacao_Tela_01' component={Doacao_Tela_01}/>
                 <AppStack.Screen name='Login_Erro_Tela_00' component={Login_Erro_Tela_00}/>
                 <AppStack.Screen name='Cadastro_Tela_00' component={Cadastro_Tela_00}/>
                 <AppStack.Screen name='Cadastro_Tela_01' component={Cadastro_Tela_01}/>

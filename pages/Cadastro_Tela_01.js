@@ -16,11 +16,11 @@ const Cadastro_Tela_01 = ({navigation}) => {
                         <Text style={{color: "white"}}> Usuario cadastrado com sucesso!</Text>
                     </View>
                     <View style={styles.grupo_Botoes}>
-                        <TouchableOpacity style={styles.botao_Doação}>
-                            <Text style={{color: "white"}}>Doação</Text>
+                        <TouchableOpacity style={styles.botao_Menu} onPress={() => navigation.navigate('Menu_Tela_00')}>
+                            <Text style={{color: "white"}}>Menu</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.botao_Voltar} onPress={() => navigation.navigate('Login_Tela_00')}>
-                            <Text style={{color: "white"}}>Voltar</Text>
+                        <TouchableOpacity style={styles.botao_Sair} onPress={() => navigation.navigate('Login_Tela_00')}>
+                            <Text style={{color: "white"}}>Sair</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -58,15 +58,15 @@ const styles = StyleSheet.create({
         textAlign: "center",
         paddingTop:10,
     },
-    botao_Doação:{
-        backgroundColor: "#E1CC06",
+    botao_Menu:{
+        backgroundColor: "#0BCF05",
         alignItems: "center",
         justifyContent: "center",
         width: 140,
         height: 40,
         borderRadius: 50,
     },
-    botao_Voltar:{
+    botao_Sair:{
         backgroundColor: "#F21E1E",
         alignItems: "center",
         justifyContent: "center",
