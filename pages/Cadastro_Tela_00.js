@@ -29,8 +29,8 @@ const Cadastro_Tela_00 = ({navigation}) => {
         const auth = getAuth();
         try {
             await createUserWithEmailAndPassword(auth, email, password);
-            await cadastrarUsuario(razaoSocial, cnpj, nomeFantasia, email, telefone, cep, numero, complemento);
-            navigation.navigate('Cadastro_Tela_01');
+            const response = await cadastrarUsuario(razaoSocial, cnpj, nomeFantasia, email, telefone, cep, numero, complemento);
+            navigation.navigate('Cadastro_Tela_01', response);
           } catch (ex) {
             console.log(ex);
           }
@@ -45,35 +45,35 @@ const Cadastro_Tela_00 = ({navigation}) => {
                     <Text style={styles.titulo}>
                         Cadastro
                     </Text>
-                    <View style={styles.box_alinhamento}>
-                        <Text style={styles.title_box}></Text>
+                    <View style={[styles.box_alinhamento, { flexDirection: `column` }]}>
+                        <Text style={[styles.title_box, { alignSelf: `auto` }]}>Razão Social</Text>
                         <TextInput
-                        placeholder="razão social"
+                        placeholder=""
                         value={razaoSocial}
                         onChangeText={value => setRazaoSocial(value)}
                         style={styles.info_request}
                         />
                     </View>
-                    <View style={styles.box_alinhamento}>
-                        <Text style={styles.title_box}></Text>
+                    <View style={[styles.box_alinhamento, { flexDirection: `column` }]}>
+                        <Text style={styles.title_box}>Cnpj</Text>
                         <TextInput
-                        placeholder="cnpj"
+                        placeholder="00.000.000/0001-00"
                         value={cnpj}
                         onChangeText={value => setCnpj(value)}
                         style={styles.info_request}
                         />                        
                     </View>
-                    <View style={styles.box_alinhamento}>
-                        <Text style={styles.title_box}></Text>
+                    <View style={[styles.box_alinhamento, { flexDirection: `column` }]}>
+                        <Text style={styles.title_box}>Nome Fantasia</Text>
                         <TextInput
-                        placeholder="nome fantasia"
+                        placeholder=""
                         value={nomeFantasia}
                         onChangeText={value => setNomeFantasia(value)}
                         style={styles.info_request}
                         />                        
                     </View>
-                    <View style={styles.box_alinhamento}>
-                        <Text style={styles.title_box}></Text>
+                    <View style={[styles.box_alinhamento, { flexDirection: `column` }]}>
+                        <Text style={styles.title_box}>Email</Text>
                         <TextInput
                         placeholder="exemplo@email.com"
                         value={email}
@@ -81,8 +81,8 @@ const Cadastro_Tela_00 = ({navigation}) => {
                         style={styles.info_request}
                         />                        
                     </View>
-                    <View style={styles.box_alinhamento}>
-                        <Text style={styles.title_box}></Text>
+                    <View style={[styles.box_alinhamento, { flexDirection: `column` }]}>
+                        <Text style={styles.title_box}>Telefone</Text>
                         <TextInput
                         placeholder="(99)999999999"
                         value={telefone}
@@ -90,37 +90,37 @@ const Cadastro_Tela_00 = ({navigation}) => {
                         style={styles.info_request}
                         />
                     </View>
-                    <View style={styles.box_alinhamento}>
-                        <Text style={styles.title_box}></Text>
+                    <View style={[styles.box_alinhamento, { flexDirection: `column` }]}>
+                        <Text style={styles.title_box}>Cep</Text>
                         <TextInput
-                        placeholder="cep"
+                        placeholder="só numeros"
                         value={cep}
                         onChangeText={value => setCep(value)}
                         style={styles.info_request}
                         />                        
                     </View>
-                    <View style={styles.box_alinhamento}>
-                        <Text style={styles.title_box}></Text>
+                    <View style={[styles.box_alinhamento, { flexDirection: `column` }]}>
+                        <Text style={styles.title_box}>Número</Text>
                         <TextInput
-                        placeholder="número"
+                        placeholder=""
                         value={numero}
                         onChangeText={value => setNumero(value)}
                         style={styles.info_request}
                         />
                     </View>
-                    <View style={styles.box_alinhamento}>
-                        <Text style={styles.title_box}></Text>
+                    <View style={[styles.box_alinhamento, { flexDirection: `column` }]}>
+                        <Text style={styles.title_box}>Complemento</Text>
                         <TextInput
-                        placeholder="complemento"
+                        placeholder=""
                         value={complemento}
                         onChangeText={value => setComplemento(value)}
                         style={styles.info_request}
                         />
                     </View>
-                    <View style={styles.box_alinhamento}>
-                        <Text style={styles.title_box}></Text>
+                    <View style={[styles.box_alinhamento, { flexDirection: `column` }]}>
+                        <Text style={styles.title_box}>Senha</Text>
                         <TextInput
-                        placeholder="senha"
+                        placeholder=""
                         value={password}
                         onChangeText={value => setPassword(value)}
                         secureTextEntry={true}
@@ -155,9 +155,8 @@ const styles = StyleSheet.create({
     container_intern: {
         backgroundColor: '#76C0F1',
         borderRadius: 50,
-        //justifyContent: 'left',
         //width: 100, 
-        height: 600,
+        height: 730,
         //textAlign: "left",
         alignItems: "center",  
         justifyContent: 'space-around',      
@@ -177,15 +176,15 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
     },
     title_box:{
-        fontSize: 16,
+        fontSize: 13,
         fontWeight: 'bold',
-        color: 'white',
+        color: '#4E5A65',
     },
     box_alinhamento:{
         flexDirection: 'row',
         justifyContent: 'space-around',
-        alignItems: 'center',
-        paddingTop:10,
+        alignItems: 'left',
+        //paddingTop:10,
     },
     botao_Sair:{
         backgroundColor: "#F21E1E",

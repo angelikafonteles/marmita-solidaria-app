@@ -6,20 +6,24 @@ import { firebaseConfig } from '../src/Firebaseconfig';
 import { initializeApp } from 'firebase/app';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth} from 'firebase/auth';
 import { async } from '@firebase/util';
+import { findByEmail } from './services/ApiService';
 
 const Login_Tela_00 = ({navigation}) => {
     const app = initializeApp(firebaseConfig);
+    
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
     async function login() {
-        const auth = getAuth();
-        await signInWithEmailAndPassword(auth, email, password)
-        .then(value => {
-            navigation.navigate('Menu_Tela_00')
-
-        })
-        .catch(error => navigation.navigate('Login_Erro_Tela_00'));
+        try {
+            const auth = getAuth();
+            await signInWithEmailAndPassword(auth, email, password)
+            const user = await findByEmail(email);
+            navigation.navigate('Menu_Tela_00', user)
+        } catch (error) {
+            console.log(error)
+            navigation.navigate('Login_Erro_Tela_00');
+        }
     }
     return (
         <>
@@ -30,8 +34,8 @@ const Login_Tela_00 = ({navigation}) => {
                     <Text style={styles.titulo}>
                         Login
                     </Text>
-                    <View style={styles.box_alinhamento}>
-                        <Text style={styles.title_box}></Text>
+                    <View style={[styles.box_alinhamento, { flexDirection: `column` }]}>
+                        <Text style={styles.title_box}>Usuário</Text>
                         <TextInput
                         placeholder="exemplo@email.com"
                         value={email}
@@ -39,10 +43,10 @@ const Login_Tela_00 = ({navigation}) => {
                         style={styles.info_request}
                         />                        
                     </View>
-                    <View style={styles.box_alinhamento}>
-                        <Text style={styles.title_box}></Text>
+                    <View style={[styles.box_alinhamento, { flexDirection: `column` }]}>
+                        <Text style={styles.title_box}>Senha</Text>
                         <TextInput
-                        placeholder="senha"
+                        placeholder=""
                         value={password}
                         onChangeText={value => setPassword(value)}
                         secureTextEntry={true}
@@ -85,7 +89,6 @@ const styles = StyleSheet.create({
     container_intern: {
         backgroundColor: '#76C0F1',
         borderRadius: 50,
-        //justifyContent: 'center',
         //width: 100, 
         height: 300,
         //textAlign: "center",
@@ -107,14 +110,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
     },
     title_box:{
-        fontSize: 16,
+        fontSize: 13,
         fontWeight: 'bold',
-        color: 'white',
+        color: '#4E5A65',
     },
     box_alinhamento:{
         flexDirection: 'row',
         justifyContent: 'space-around',
-        alignItems: 'center',
+        alignItems: 'left',
     },
     botao_Entrar:{
         backgroundColor: "#0BCF05",

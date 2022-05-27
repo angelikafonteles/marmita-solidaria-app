@@ -12,8 +12,8 @@ const Esqueci_Senha_Tela_01 = ({navigation}) => {
                     <Text style={styles.titulo}>
                         Esqueci a Senha
                     </Text>
+                    <View style={[styles.box_alinhamento, { flexDirection: `column` }]}>
                     <Text style={styles.title_box}>Informe seu email</Text>
-                    <View style={styles.box_alinhamento}>
                         <TextInput
                         placeholder="exemplo@email.com"
                         style={styles.info_request}
@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
     container_intern: {
         backgroundColor: '#76C0F1',
         borderRadius: 50,
-        //justifyContent: 'center',
         //width: 100, 
         height: 300,
         //textAlign: "center",
@@ -70,14 +69,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
     },
     title_box:{
-        fontSize: 16,
+        fontSize: 13,
         fontWeight: 'bold',
-        color: 'white',
+        color: '#4E5A65',
     },
     box_alinhamento:{
         flexDirection: 'row',
         justifyContent: 'space-around',
-        alignItems: 'center',
+        alignItems: 'left',
     },
     botao_Enviar:{
         backgroundColor: "#0BCF05",

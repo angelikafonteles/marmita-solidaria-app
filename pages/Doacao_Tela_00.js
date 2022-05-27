@@ -11,9 +11,8 @@ import { Database, getDatabase, ref, set, update, getFirestore } from "firebase/
 import { inserirMarmita } from './services/ApiService';
 
 
-const Doacao_Tela_00 = ({navigation}) => {
+const Doacao_Tela_00 = ({navigation, route}) => {
 
-    const [restauranteId, setRestauranteId] = React.useState('');
     const [dataFeitura, setDataFeitura] = React.useState('');
     const [descricao, setDescricao] = React.useState('');
     const [observacao, setObservacao] = React.useState('');
@@ -21,7 +20,7 @@ const Doacao_Tela_00 = ({navigation}) => {
 
     const inserirDoacao = async () => {
         try {
-            await inserirMarmita(restauranteId, dataFeitura, descricao, observacao, observacao, quantidade);
+            await inserirMarmita(route.params.id, dataFeitura, descricao, observacao, quantidade);
             navigation.navigate('Doacao_Tela_01');
           } catch (ex) {
             console.log(ex);
@@ -37,8 +36,8 @@ const Doacao_Tela_00 = ({navigation}) => {
                     <Text style={styles.titulo}>
                         Doação
                     </Text>
-                    <View style={styles.box_alinhamento}>
-                        <Text style={styles.title_box}></Text>
+                    <View style={[styles.box_alinhamento, { flexDirection: `column` }]}>
+                        <Text style={styles.title_box}>Data Feitura</Text>
                         <TextInput
                         placeholder="dd/mm/aaaa hh:mm:ss"
                         value={dataFeitura}
@@ -46,19 +45,28 @@ const Doacao_Tela_00 = ({navigation}) => {
                         style={styles.info_request}
                         />                        
                     </View>
-                    <View style={styles.box_alinhamento}>
-                        <Text style={styles.title_box}></Text>
+                    <View style={[styles.box_alinhamento, { flexDirection: `column` }]}>
+                        <Text style={styles.title_box}>Descrição</Text>
                         <TextInput
-                        placeholder="descrição"
+                        placeholder=""
                         value={descricao}
                         onChangeText={value => setDescricao(value)}
                         style={styles.info_request}
                         />                        
                     </View>
-                    <View style={styles.box_alinhamento}>
-                        <Text style={styles.title_box}></Text>
+                    <View style={[styles.box_alinhamento, { flexDirection: `column` }]}>
+                        <Text style={styles.title_box}>Observação</Text>
                         <TextInput
-                        placeholder="quantidade"
+                        placeholder=""
+                        value={observacao}
+                        onChangeText={value => setObservacao(value)}
+                        style={styles.info_request}
+                        />                        
+                    </View>
+                    <View style={[styles.box_alinhamento, { flexDirection: `column` }]}>
+                        <Text style={styles.title_box}>Quantidade</Text>
+                        <TextInput
+                        placeholder=""
                         value={quantidade}
                         onChangeText={value => setQuantidade(value)}
                         style={styles.info_request}
@@ -92,9 +100,8 @@ const styles = StyleSheet.create({
     container_intern: {
         backgroundColor: '#76C0F1',
         borderRadius: 50,
-        //justifyContent: 'left',
         //width: 100, 
-        height: 250,
+        height: 350,
         //textAlign: "left",
         alignItems: "center",  
         justifyContent: 'space-around',      
@@ -114,14 +121,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
     },
     title_box:{
-        fontSize: 16,
+        fontSize: 13,
         fontWeight: 'bold',
-        color: 'white',
+        color: '#4E5A65',
     },
     box_alinhamento:{
         flexDirection: 'row',
         justifyContent: 'space-around',
-        alignItems: 'center',
+        alignItems: 'left',
         //paddingTop:10,
     },
     botao_Sair:{

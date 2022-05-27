@@ -16,8 +16,8 @@ const Doacao_Tela_01 = ({navigation}) => {
                         <Text style={{color: "white"}}> Marmita incluída com sucesso!</Text>
                     </View>
                     <View style={styles.grupo_Botoes}>
-                        <TouchableOpacity style={styles.botao_Menu} onPress={() => navigation.navigate('Menu_Tela_00')}>
-                            <Text style={{color: "white"}}>Menu</Text>
+                        <TouchableOpacity style={styles.botao_Menu} onPress = {() => {navigation.goBack()}}>
+                            <Text style={{color: "white"}}>Adicionar</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.botao_Sair} onPress={() => navigation.navigate('Login_Tela_00')}>
                             <Text style={{color: "white"}}>Sair</Text>
@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
     container_intern: {
         backgroundColor: '#76C0F1',
         borderRadius: 50,
-        //justifyContent: 'center',
         //width: 100, 
         height: 300,
         //textAlign: "center",

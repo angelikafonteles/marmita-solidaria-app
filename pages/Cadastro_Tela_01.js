@@ -2,7 +2,8 @@ import React from 'react'
 import { View, Text, StyleSheet, Button, TouchableOpacity, Image, TextInput } from 'react-native'
 import Header from './components/Header'
 
-const Cadastro_Tela_01 = ({navigation}) => {
+const Cadastro_Tela_01 = ({navigation, route}) => {
+    const user = {id: route.params.id};
     return (
         <>
             <Header title="Marmita Solidária"></Header>
@@ -13,10 +14,10 @@ const Cadastro_Tela_01 = ({navigation}) => {
                         Cadastro
                     </Text>
                     <View style={styles.mensagem}>
-                        <Text style={{color: "white"}}> Usuario cadastrado com sucesso!</Text>
+                        <Text style={{color: "white"}}> Cadastrado efetuado com sucesso!</Text>
                     </View>
                     <View style={styles.grupo_Botoes}>
-                        <TouchableOpacity style={styles.botao_Menu} onPress={() => navigation.navigate('Menu_Tela_00')}>
+                        <TouchableOpacity style={styles.botao_Menu} onPress={() => navigation.navigate('Menu_Tela_00', user)}>
                             <Text style={{color: "white"}}>Menu</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.botao_Sair} onPress={() => navigation.navigate('Login_Tela_00')}>
@@ -44,7 +45,6 @@ const styles = StyleSheet.create({
     container_intern: {
         backgroundColor: '#76C0F1',
         borderRadius: 50,
-        //justifyContent: 'center',
         //width: 100, 
         height: 300,
         //textAlign: "center",

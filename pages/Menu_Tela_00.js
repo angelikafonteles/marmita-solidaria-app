@@ -3,8 +3,8 @@ import React from 'react'
 import { View, Text, StyleSheet, Button, TouchableOpacity, Image, TextInput } from 'react-native'
 import Header from './components/Header'
 
-const Menu_Tela_00 = ({navigation}) => {
-
+const Menu_Tela_00 = ({navigation, route}) => {
+    const user = {id: route.params.id};
     return (
         <>
             <Header title="Marmita Solidária"></Header>
@@ -15,7 +15,7 @@ const Menu_Tela_00 = ({navigation}) => {
                         Menu
                     </Text>
                     <View style={styles.grupo_Botoes}>
-                        <TouchableOpacity style={styles.botao_Doação} onPress={() => navigation.navigate('Doacao_Tela_00')}>
+                        <TouchableOpacity style={styles.botao_Doação} onPress={() => navigation.navigate('Doacao_Tela_00', user)}>
                             <Text style={{color: "white"}}>Doação</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.botao_Sair} onPress={() => navigation.navigate('Login_Tela_00')}>
@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
     container_intern: {
         backgroundColor: '#76C0F1',
         borderRadius: 50,
-        //justifyContent: 'center',
         //width: 100, 
         height: 300,
         //textAlign: "center",
